@@ -29,7 +29,7 @@ nav{
     margin-top: 20px; /* Add some margin to separate from the table */
     display: block; /* Ensure it takes full width if needed */
     width: 100%; /* Full width to align with the table */
-    margin-left: -600px; /* Change this value to move the button left or right */
+    margin-left: -250px; /* Change this value to move the button left or right */
     transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
@@ -68,4 +68,20 @@ nav{
 /* Add this rule to adjust the position of the table */
 .shift-up {
     margin-top: -70px; /* Adjust this value as needed */
+}
+
+
+.edit-btn {
+    color: #ffffff; /* Set text color */
+    background-color: #027246; /* Match button color */
+    padding: 5px 10px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 4px; /* Optional: round the button edges */
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color: #025e3a;
+    color: white; /* Change text color to white */
+    opacity: 0.8;
 }
