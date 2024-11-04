@@ -1,0 +1,17 @@
+nav{
+    background-color: #027246;
+}
+
+.navbar-brand{
+    font-weight: bold;
+}
+
+.img-fluid{
+    max-height: 150px;
+}
+
+.btn{
+    background-color: #027246;
+    text-decoration: white;
+}
+
