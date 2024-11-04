@@ -55,3 +55,30 @@ function addResource() {
     // Send JSON data
     request.send(JSON.stringify(jsonData));
 }
+
+function viewStudents() {
+    var response = '';
+    var request = new XMLHttpRequest();
+    request.open('GET', '/view-students', true);
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.onload = function () {
+        response = JSON.parse(request.responseText);
+        var html = ''
+        for (var i = 0; i < response.length; i++) {
+            html += '<tr>' +
+                '<td>' + response[i].matric_no + '</td>' +
+                '<td>' + response[i].name + '</td>' +
+                '<td>' + response[i].date_of_birth + '</td>' +
+                '<td>' + response[i].email + '</td>' +
+                '<td>' + response[i].contact_no + '</td>' +
+                '<td>' + response[i].course + '</td>' +
+                '<td>' +
+                '<button type="button" class="btn btn-warning" onclick="editStudent(\'' + JSON.stringify(response[i]).replaceAll('\"', '&quot;') + '\')">Edit </button> ' +
+                '<button type="button" class="btn btn-danger" onclick="deleteStudent(' + response[i].id + ')"> Delete</button>' +
+                '</td>' +
+                '</tr>'
+        }
+        document.getElementById('tableContent').innerHTML = html;
+    };
+    request.send();
+}
