@@ -73,8 +73,7 @@ function viewStudents() {
                 '<td>' + response[i].contact_no + '</td>' +
                 '<td>' + response[i].course + '</td>' +
                 '<td>' +
-                '<button type="button" class="btn btn-warning" onclick="editStudent(\'' + JSON.stringify(response[i]).replaceAll('\"', '&quot;') + '\')">Edit </button> ' +
-                '<button type="button" class="btn btn-danger" onclick="deleteStudent(' + response[i].id + ')"> Delete</button>' +
+                '<button type="button" class="btn edit-btn" onclick="editStudent(\'' + JSON.stringify(response[i]).replaceAll('\"', '&quot;') + '\')">Edit </button> ' +
                 '</td>' +
                 '</tr>'
         }
