@@ -1,4 +1,4 @@
-function addResource() {
+function addStudent() {
     var response = "";
     var jsonData = new Object();
 

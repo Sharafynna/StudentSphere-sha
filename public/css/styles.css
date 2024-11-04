@@ -1,0 +1,50 @@
+nav{
+    background-color: #027246;
+}
+
+.navbar-brand{
+    font-weight: bold;
+}
+
+.img-fluid{
+    max-height: 150px;
+}
+
+.custom-btn{
+    background-color: #027246;
+    text-decoration: white;
+    margin-top: -122px;
+}
+
+.btn{
+    background-color: #027246;
+    text-decoration: white;
+}
+
+.btn:hover {
+    background-color: #027246;
+    opacity: 0.8;
+    transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: #027246;
+    opacity: 0.8;
+    transition: background-color 0.3s ease;
+}
+
+
+.custom-image {
+    width: 200px;
+    height: 500px;
+    margin-left: -860px; /* Shift the image to the right */
+    margin-top: -30px;
+}
+
+.container {
+    margin-top: -110px; /* Adjust this value to move elements up */
+}
+
+.table {
+    margin-top: -110px; /* Adjust this value to move the table up */
+}
