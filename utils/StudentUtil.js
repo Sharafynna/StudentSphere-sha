@@ -39,6 +39,15 @@ async function addStudent(req, res) {
     }
 }
 
+async function viewStudents(req,res){
+    try{
+        const allStudents = await readJSON('utils/students.json');
+        return res.status(201).json(allStudents);
+    } catch(error){
+        return res.status(500).json({message: error.message});
+    }
+}
+
 module.exports = {
-    readJSON, writeJSON, addStudent
+    readJSON, writeJSON, addStudent, viewStudents
 };
