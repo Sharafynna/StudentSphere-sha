@@ -56,6 +56,7 @@ function addStudent() {
     request.send(JSON.stringify(jsonData));
 }
 
+document.addEventListener('DOMContentLoaded', function() {
 function viewStudents() {
     var response = '';
     var request = new XMLHttpRequest();
@@ -77,7 +78,16 @@ function viewStudents() {
                 '</td>' +
                 '</tr>'
         }
-        document.getElementById('tableContent').innerHTML = html;
-    };
+         // Check if the tableContent element is found
+         const tableContent = document.getElementById('tableContent');
+         if (tableContent) {
+             tableContent.innerHTML = html;
+         } else {
+             console.error('Element with ID tableContent not found');
+         }
+     };
     request.send();
 }
+// Call your function to view students when the DOM is fully loaded
+viewStudents();
+});
