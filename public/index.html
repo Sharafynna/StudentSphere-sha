@@ -11,15 +11,17 @@
     <script src="js/student.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/student.js"></script>
-    
+
     <title>Student Sphere</title>
 </head>
+
 <body onload="viewStudents()">
     <!--Navigation Bar-->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand text-white" href="#">
-                <img src="images/StudentSphere.png" alt="Logo" width="150" height="120" class="d-inline-block align-text-top">
+                <img src="images/StudentSphere.png" alt="Logo" width="150" height="120"
+                    class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,16 +41,71 @@
                 </ul>
             </div>
         </div>
-    </nav>    
+    </nav>
     <div class="container-fluid mt-5">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-2">
+                <div>
+                    <strong>Filter by Course:</strong>
+
+                    <div class="form-group d-flex flex-column">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="courseFilter" id="all" value="all">
+                            <label class="form-check-label" for="all">All Courses</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="courseFilter" id="it"
+                                value="Information Technology">
+                            <label class="form-check-label" for="it">Information Technology</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="courseFilter" id="aai"
+                                value="Applied Artificial Intelligence">
+                            <label class="form-check-label" for="aai">Applied Artificial Intelligence</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="courseFilter" id="imd"
+                                value="Immersive Media and Game Development">
+                            <label class="form-check-label" for="imd">Immersive Media and Game Development</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="courseFilter" id="bda"
+                                value="Big Data and Analytics">
+                            <label class="form-check-label" for="bda">Big Data and Analytics</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="filterStudentsByCourse()">Filter</button>
+                </div>
             </div>
-            <div class="col-md-2 mb-3 text-right">
+
+            <div class="col-md-8 mb-4">
+                <div class="table-responsive">
+                    <table class="table table-striped table-striped-custom table-hover">
+                        <thead>
+                            <tr>
+                                <th>Matric No.</th>
+                                <th>Name</th>
+                                <th>Date Of Birth</th>
+                                <th>Email</th>
+                                <th>Contact No.</th>
+                                <th>Course</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableContent">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-2 mb-4 text-right">
                 <button type="button" class="btn custom-btn" data-toggle="modal" data-target="#studentModal">
                     Add Student
                 </button>
             </div>
+        </div>
+
+
+
             <!-- Modal -->
             <div class="modal fade" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="studentModalLabel"
                 aria-hidden="true">
@@ -101,29 +158,18 @@
                     </div>
                 </div>
             </div>
+
+            <!--Table -->
             <div class="row">
                 <div class="col-md-12">
-                    <div class="table-responsive shift-up">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-striped-custom table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Matric No.</th>
-                                    <th>Name</th>
-                                    <th>Date Of Birth</th>
-                                    <th>Email</th>
-                                    <th>Contact No.</th>
-                                    <th>Course</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tableContent">
-                            </tbody>
-                        </table>
-                    </div>
+
                 </div>
-            </div>          
+            </div>
+
+            <div>
+
+            </div>
         </div>
-    </div>
 </body>
 
 </html>
