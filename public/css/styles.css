@@ -26,10 +26,10 @@ nav{
 .custom-btn {
     background-color: #027246;
     color: white; /* Change text color to white */
-    margin-top: 20px; /* Add some margin to separate from the table */
+    margin-top: 0px; /* Add some margin to separate from the table */
     display: block; /* Ensure it takes full width if needed */
     width: 100%; /* Full width to align with the table */
-    margin-left: -900px; /* Change this value to move the button left or right */
+    margin-left: 0px; /* Change this value to move the button left or right */
     transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
