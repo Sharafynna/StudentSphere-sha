@@ -56,6 +56,7 @@ function addStudent() {
     request.send(JSON.stringify(jsonData));
 }
 
+document.addEventListener('DOMContentLoaded', function() {
 function viewStudents() {
     var response = '';
     var request = new XMLHttpRequest();
@@ -77,54 +78,14 @@ function viewStudents() {
                 '</td>' +
                 '</tr>'
         }
-        document.getElementById('tableContent').innerHTML = html;
-    };
+         // Check if the tableContent element is found
+         const tableContent = document.getElementById('tableContent');
+         if (tableContent) {
+             tableContent.innerHTML = html;
+         } else {
+             console.error('Element with ID tableContent not found');
+         }
+     };
     request.send();
 }
 
-function filterStudentsByCourse() {
-    const course= document.getElementsByName("courseFilter");
-    let selectedcourse = '';
-
-    for (let i =0; i<course.length; i++){
-        if(course[i].checked){
-            selectedcourse=course[i].value;
-            break;
-        }
-    }
-
-    if(selectedcourse==="all"){
-        return viewStudents();
-    }
-    
-    var response = '';
-    var request = new XMLHttpRequest();
-    request.open('GET', `/students-by-course?course=${encodeURIComponent(selectedcourse)}`, true);
-    request.setRequestHeader('Content-Type', 'application/json');
-    request.onload = function () {
-        response = JSON.parse(request.responseText);
-
-        if(response.message){
-            document.getElementById("tableContent").innerHTML='<tr>'+ 
-            '<td colspan = "6" class = "text-center">'+ response.message + '</td>' +
-            '<tr>';
-        }else{
-            var html = ''
-        for (var i = 0; i < response.length; i++) {
-            html += '<tr>' +
-                '<td>' + response[i].matric_no + '</td>' +
-                '<td>' + response[i].name + '</td>' +
-                '<td>' + response[i].date_of_birth + '</td>' +
-                '<td>' + response[i].email + '</td>' +
-                '<td>' + response[i].contact_no + '</td>' +
-                '<td>' + response[i].course + '</td>' +
-                '<td>' +
-                '<button type="button" class="btn edit-btn" onclick="editStudent(\'' + JSON.stringify(response[i]).replaceAll('\"', '&quot;') + '\')">Edit </button> ' +
-                '</td>' +
-                '</tr>'
-        }
-        document.getElementById('tableContent').innerHTML = html;
-        }  
-    };
-    request.send();
-}
