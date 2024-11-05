@@ -56,7 +56,6 @@ function addStudent() {
     request.send(JSON.stringify(jsonData));
 }
 
-document.addEventListener('DOMContentLoaded', function() {
 function viewStudents() {
     var response = '';
     var request = new XMLHttpRequest();
@@ -78,16 +77,12 @@ function viewStudents() {
                 '</td>' +
                 '</tr>'
         }
-         // Check if the tableContent element is found
-         const tableContent = document.getElementById('tableContent');
-         if (tableContent) {
-             tableContent.innerHTML = html;
-         } else {
-             console.error('Element with ID tableContent not found');
-         }
-     };
+        document.getElementById('tableContent').innerHTML = html;
+    };
     request.send();
 }
+
+
 
 function editStudent(studentData) {
     // Parse student data to use in the form
@@ -164,4 +159,3 @@ function saveEdit(matric_no) {
     // Send JSON data
     request.send(JSON.stringify(jsonData));
 }
-})
