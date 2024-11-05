@@ -14,7 +14,6 @@
     
     <title>Student Sphere</title>
 </head>
-<body onload="viewStudents()">
     <!--Navigation Bar-->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -88,9 +87,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="course">Course</label>
-                                    <input type="text" class="form-control" id="course" placeholder="Enter course"
-                                        required>
+                                    <select class="form-control" id="course" required>
+                                        <option value="" disabled selected>Select a course</option>
+                                        <option value="Information Technology">Information Technology</option>
+                                        <option value="Applied Artificial Intelligence">Applied Artificial Intelligence</option>
+                                        <option value="Immersive Media and Game Development">Immersive Media and Game Development</option>
+                                        <option value="Big Data and Analytics">Big Data and Analytics</option>
+                                        <option value="Common ICT Programme">Common ICT Programme</option>
+                                    </select>
                                 </div>
+                                
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -125,5 +131,6 @@
         </div>
     </div>
 </body>
+
 
 </html>
