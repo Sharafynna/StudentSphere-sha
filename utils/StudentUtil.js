@@ -48,6 +48,18 @@ async function viewStudents(req,res){
     }
 }
 
+async function filterStudentsByCourse(course){
+    try{
+        const allStudents=await readJSON('utils/students.json');
+        const filteredStudents= allStudents.filter(student=>student.course === course);
+        return {students:filteredStudents};
+
+    }catch(error){
+        console.error(error);
+        throw error;
+    }
+}
+
 module.exports = {
-    readJSON, writeJSON, addStudent, viewStudents
+    readJSON, writeJSON, addStudent, viewStudents, filterStudentsByCourse
 };
