@@ -19,12 +19,12 @@ async function writeJSON(object, filename) {
 async function editStudent(req, res) {
     try {
         const id = req.params.id;
-        const name = req.params.name;
-        const matric_no = req.params.matric_no;
-        const date_of_birth = req.params.date_of_birth;
-        const email = req.params.email;
-        const contact_no = req.params.contact_no;
-        const course = req.params.course;
+        const name = req.body.name;
+        const matric_no = req.body.matric_no;
+        const date_of_birth = req.body.date_of_birth;
+        const email = req.body.email;
+        const contact_no = req.body.contact_no;
+        const course = req.body.course;
 
         const allStudents = await readJSON('utils/students.json');
 
