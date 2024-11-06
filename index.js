@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("./public"));
 
-const { addStudent,  } = require('./utils/StudentUtil')
+const { addStudent,  } = require('./utils/addStudentUtil')
 const{viewStudents, filterStudentsByCourse} = require('./utils/view_students');
 app.post('/add-student', addStudent);
 app.get('/view-students', viewStudents);
