@@ -26,13 +26,10 @@ async function addStudent(req, res) {
         if (contact_no.length < 8 || isNaN(contact_no)) {
             return res.status(400).json({ message: 'Invalid contact number' });
         }
-        if (!course || course.length < 3) {
-            return res.status(400).json({ message: 'Course name too short' });
-        }
 
         const newStudent = new Student(name, matric_no, date_of_birth, email, contact_no, course);
         const updatedStudents = await writeJSON(newStudent, 'utils/students.json');
-        
+
         return res.status(201).json(updatedStudents);
     } catch (error) {
         return res.status(500).json({ message: error.message });
