@@ -9,10 +9,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("./public"));
 
-const { addStudent, viewStudents, filterStudentsByCourse, editStudent } = require('./utils/StudentUtil')
+const { addStudent, viewStudents, filterStudentsByCourse, editStudent } = require('./utils/updateStudentUtil')
 app.post('/add-student', addStudent);
 app.get('/view-students', viewStudents);
-app.put('/update-student/:id', editStudent);
+app.put('/edit-student/:id', editStudent);
 
 app.get('/students-by-course',async(req,res)=>{
     try{

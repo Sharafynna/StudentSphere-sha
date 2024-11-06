@@ -167,6 +167,60 @@
                 </div>
             </div>
 
+            <!-- edit Modal -->
+            <div class="modal fade" id="editStudentModal" tabindex="-1" role="dialog" aria-labelledby="editStudentModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editStudentModalLabel">Edit Student</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="matric_no">Matric Number</label>
+                                    <input type="text" class="form-control" id="editMatric_no" placeholder="Enter matric number" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="editName" placeholder="Enter student name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="date_of_birth">Date of Birth</label>
+                                    <input type="date" class="form-control" id="editDate_of_birth" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="editEmail" placeholder="Enter email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact_no">Contact Number</label>
+                                    <input type="tel" class="form-control" id="editContact_no" placeholder="Enter contact number" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="course">Course</label>
+                                    <select class="form-control" id="editCourse" required>
+                                        <option value="" disabled selected>Select a course</option>
+                                        <option value="Information Technology">Information Technology</option>
+                                        <option value="Applied Artificial Intelligence">Applied Artificial Intelligence</option>
+                                        <option value="Immersive Media and Game Development">Immersive Media and Game Development</option>
+                                        <option value="Big Data and Analytics">Big Data and Analytics</option>
+                                        <option value="Common ICT Programme">Common ICT Programme</option>
+                                    </select>
+                                </div>
+                                <p align="right" id="editMessage" class=""></p>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id = "updateButton" onclick="">Edit Student</button>   
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div>
 
             </div>
