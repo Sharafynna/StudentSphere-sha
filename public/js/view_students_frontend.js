@@ -34,7 +34,7 @@ function filterStudentsByCourse() {
     const course = document.getElementById("courseFilter").value.toLowerCase();
 
     //showing error message if there is no filter input
-    if (course == "" || !course) {
+    if (course == "" || !course || course.trim() === "") {
         document.getElementById("filterMessage").innerHTML = 'Please enter the course name to filter';
         document.getElementById("filterMessage").setAttribute("class", "text-danger");
         alert("The students are not filtered.")
