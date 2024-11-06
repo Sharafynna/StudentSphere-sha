@@ -11,7 +11,6 @@ app.use(express.static("./public"));
 
 const { addStudent, viewStudents } = require('./utils/addStudentUtil')
 app.post('/add-student', addStudent);
-app.get('/view-students', viewStudents);
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/" + startPage);
