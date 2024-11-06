@@ -39,27 +39,6 @@ async function addStudent(req, res) {
     }
 }
 
-async function viewStudents(req,res){
-    try{
-        const allStudents = await readJSON('utils/students.json');
-        return res.status(201).json(allStudents);
-    } catch(error){
-        return res.status(500).json({message: error.message});
-    }
-}
-
-async function filterStudentsByCourse(course){
-    try{
-        const allStudents=await readJSON('utils/students.json');
-        const filteredStudents= allStudents.filter(student=>student.course === course);
-        return {students:filteredStudents};
-
-    }catch(error){
-        console.error(error);
-        throw error;
-    }
-}
-
 module.exports = {
-    readJSON, writeJSON, addStudent, viewStudents, filterStudentsByCourse
+    readJSON, writeJSON, addStudent
 };
