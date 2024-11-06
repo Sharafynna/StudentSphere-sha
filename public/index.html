@@ -11,7 +11,7 @@
     <script src="js/student.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/student.js"></script>
-
+    <script src="js/view_students_frontend.js"></script>
     <title>Student Sphere</title>
 </head>
 
@@ -47,32 +47,9 @@
             <div class="col-md-2">
                 <div>
                     <strong>Filter by Course:</strong>
-
                     <div class="form-group d-flex flex-column">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="courseFilter" id="all" value="all">
-                            <label class="form-check-label" for="all">All Courses</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="courseFilter" id="it"
-                                value="Information Technology">
-                            <label class="form-check-label" for="it">Information Technology</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="courseFilter" id="aai"
-                                value="Applied Artificial Intelligence">
-                            <label class="form-check-label" for="aai">Applied Artificial Intelligence</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="courseFilter" id="imd"
-                                value="Immersive Media and Game Development">
-                            <label class="form-check-label" for="imd">Immersive Media and Game Development</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="courseFilter" id="bda"
-                                value="Big Data and Analytics">
-                            <label class="form-check-label" for="bda">Big Data and Analytics</label>
-                        </div>
+                        <p align="left" id="filterMessage" class=""></p>
+                        <input type="text" id="courseFilter" class="form-control" placeholder="Enter course name to filter">
                     </div>
                     <button class="btn btn-primary" onclick="filterStudentsByCourse()">Filter</button>
                 </div>
