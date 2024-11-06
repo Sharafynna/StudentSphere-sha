@@ -19,15 +19,15 @@ function updateStudent(id) {
     var response = "";
 
     var jsonData = new Object();
-    jsonData.matric_no = document.getElementById("editMatric_no").value;
-    jsonData.name = document.getElementById("editName").value;
-    jsonData.date_of_birth = document.getElementById("editDate_of_birth").value;
-    jsonData.email = document.getElementById("editEmail").value;
-    jsonData.contact_no = document.getElementById("editContact_no").value;
-    jsonData.course = document.getElementById("editCourse").value;
+    jsonData.matric_no = document.getElementById("editMatric_no").value.trim();
+    jsonData.name = document.getElementById("editName").value.trim();
+    jsonData.date_of_birth = document.getElementById("editDate_of_birth").value.trim();
+    jsonData.email = document.getElementById("editEmail").value.trim();
+    jsonData.contact_no = document.getElementById("editContact_no").value.trim();
+    jsonData.course = document.getElementById("editCourse").value.trim();
 
-    if (jsonData.name == "" || jsonData.matric_no == "" || jsonData.date_of_birth == "" || jsonData.email == "" || jsonData.contact_no == "" || jsonData.course == "" ) {
-            document.getElementById("editMessage").innerHTML = 'All fields are required!';
+    if (!jsonData.name || !jsonData.matric_no  || !jsonData.date_of_birth || !jsonData.email || !jsonData.contact_no || !jsonData.course ) {
+            document.getElementById("editMessage").innerHTML = 'All fields are required and cannot contain only spaces!';
             document.getElementById("editMessage").setAttribute("class", "text-danger");
         return;
     }
