@@ -46,6 +46,10 @@ function addStudent() {
 
             // Optionally redirect to a new page
             window.location.href = 'index.html';
+        } else if (request.status === 400) {
+            // Error: Display the message from the backend
+            document.getElementById("message").innerHTML = response.message;
+            document.getElementById("message").setAttribute("class", "text-danger");
         } else {
             document.getElementById("message").innerHTML = 'Unable to add student!';
             document.getElementById("message").setAttribute("class", "text-danger");
