@@ -10,6 +10,8 @@ app.use(bodyParser.json());
 app.use(express.static("./public"));
 
 const { addStudent, viewStudents, filterStudentsByCourse, editStudent } = require('./utils/updateStudentUtil')
+const { addStudent,  } = require('./utils/addStudentUtil')
+const{viewStudents, filterStudentsByCourse} = require('./utils/view_students');
 app.post('/add-student', addStudent);
 app.get('/view-students', viewStudents);
 app.put('/edit-student/:id', editStudent);
@@ -18,7 +20,8 @@ app.get('/students-by-course',async(req,res)=>{
     try{
         const course=req.query.course;
         const filteredStudents= await filterStudentsByCourse(course);
-        if (filteredStudents.students.length === 0){
+        
+        if (filteredStudents.studentslength === 0){
             return res.status(200).json({message: `No students found for the filtered course: ${course}`})
         }
         else{
