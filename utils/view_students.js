@@ -1,4 +1,4 @@
-const {readJSON}= require('../utils/StudentUtil');
+const {readJSON}= require('../utils/addStudentUtil');
 
 async function viewStudents(req,res){
     try{
