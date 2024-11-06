@@ -83,7 +83,3 @@ function filterStudentsByCourse() {
     };
     request.send();
 }
-
-module.exports={
-    viewStudents
-};
