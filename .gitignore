@@ -3,19 +3,3 @@ node_modules/
 
 # Ignore package-lock.json 
 package-lock.json
-
-# better to include files below in .gitignore even though you don't have these files as good common practice
-# ignore logs
-*.log
-
-# ignore environment files 
-.env
-
-# ignore OS-specific files
-.DS_Store     # macOS
-Thumbs.db     # Windows
-
-# ignore build or distribution directories 
-dist/
-build/
-
