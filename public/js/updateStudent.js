@@ -11,6 +11,7 @@ function editStudent(data) {
     document.getElementById("updateButton").setAttribute("onclick", 'updateStudent("' + selectedStudent.id + '")');
         
         $('#editStudentModal').modal('show');
+
 }
 
 
