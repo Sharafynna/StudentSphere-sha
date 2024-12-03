@@ -52,5 +52,4 @@ function updateStudent(id) {
     };
     request.send(JSON.stringify(jsonData));
     console.log(jsonData); // Log the data being sent
-
 }
