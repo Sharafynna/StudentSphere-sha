@@ -1,19 +1,22 @@
-const { Student } = require('../models/Student');
-const fs = require('fs').promises;
+const { promises: fs } = require('fs');
 
 async function readJSON(filename) {
     try {
         const data = await fs.readFile(filename, 'utf8');
         return JSON.parse(data);
-    } catch (err) { console.error(err); throw err; }
+    } catch (err) {
+        console.error(`Error reading file: ${filename}`, err);
+        throw new Error('Could not read data.');
+    }
 }
-async function writeJSON(object, filename) {
+
+async function writeJSON(data, filename) {
     try {
-        const allObjects = await readJSON(filename);
-        allObjects.push(object);
-        await fs.writeFile(filename, JSON.stringify(allObjects), 'utf8');
-        return allObjects;
-    } catch (err) { console.error(err); throw err; }
+        await fs.writeFile(filename, JSON.stringify(data, null, 2), 'utf8');
+    } catch (err) {
+        console.error(`Error writing to file: ${filename}`, err);
+        throw new Error('Could not save data.');
+    }
 }
 
 async function editStudent(req, res) {
@@ -25,16 +28,13 @@ async function editStudent(req, res) {
         const email = req.body.email;
         const contact_no = req.body.contact_no;
         const course = req.body.course;
-
         const allStudents = await readJSON('utils/students.json');
-
         var modified = false;
-
         for (var i = 0; i < allStudents.length; i++) {
             var curcurrStudents = allStudents[i];
             if (curcurrStudents.id == id) {
                 allStudents[i].name = name;
-                allStudents[i].matric_no = matric_no;
+                allStudents[i].matric_number = matric_no;
                 allStudents[i].date_of_birth = date_of_birth;
                 allStudents[i].email = email;
                 allStudents[i].contact_no = contact_no;
@@ -43,11 +43,10 @@ async function editStudent(req, res) {
             }
         }
         if (modified) {
-            await fs.writeFile('utils/students.json', JSON.stringify(allStudents), 'utf8');
-            return res.status(201).json({ message: 'Students modified successfully!' });
+            await fs.writeFile('utils/student.json', JSON.stringify(allStudents), 'utf8');
+            return res.status(201).json({ message: 'Student modified successfully!' });
         } else {
-            return res.status(500).json({ message: 'Error occurred, unable to modify!' });
-
+            return res.status(500).json({ message: 'Student not found!' });
         }
     } catch (error) {
         return res.status(500).json({ message: error.message });
@@ -55,5 +54,7 @@ async function editStudent(req, res) {
 }
 
 module.exports = {
-    readJSON, writeJSON, editStudent
+    readJSON,
+    writeJSON,
+    editStudent,
 };
