@@ -40,7 +40,7 @@ function updateStudent(id) {
     request.onload = function () {
         response = JSON.parse(request.responseText);
 
-        if (response.message == "Students modified successfully!") {
+        if (response.message == "Student modified successfully!") {
             document.getElementById("editMessage").innerHTML = 'Edited Student Information: ' + jsonData.name + '!';
             document.getElementById("editMessage").setAttribute("class", "text-success");
             window.location.href = 'index.html';
