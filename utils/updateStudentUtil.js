@@ -43,7 +43,7 @@ async function editStudent(req, res) {
             }
         }
         if (modified) {
-            await fs.writeFile('utils/student.json', JSON.stringify(allStudents), 'utf8');
+            await fs.writeFile('utils/students.json', JSON.stringify(allStudents), 'utf8');
             return res.status(201).json({ message: 'Student modified successfully!' });
         } else {
             return res.status(500).json({ message: 'Student not found!' });
