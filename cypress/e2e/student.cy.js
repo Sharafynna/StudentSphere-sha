@@ -17,10 +17,10 @@ describe('Student Sphere Frontend', () => {
     cy.wait(500);
 
     // Click the edit button for the student
-    cy.get('button.btn').filter(':contains("Edit")').last().click({ force: true });
+    cy.get('button.btn').filter(':contains("Edit")').last().click();
 
     // Update student details  
-    cy.get('#editMatric_no').clear().type('6784332M');
+    cy.get('#editMatric_no').clear().type('6784332A', {force:true});
     cy.get('#editName').clear().type('Updated Student Name');
     cy.get('#editDate_of_birth').clear().type('1973-11-07');
     cy.get('#editEmail').clear().type('updated@example.com');
@@ -28,7 +28,7 @@ describe('Student Sphere Frontend', () => {
     cy.get('#editCourse').select('Information Technology');
 
     // Click the update student button
-    cy.get('button.btn').filter(':contains("Update Student")').last().click({ force: true }); 
+    cy.get('#updateButton').click(); 
 
     // Verify the student is updated in the table
     cy.get('#tableContent').contains('Updated Student Name').should('exist');

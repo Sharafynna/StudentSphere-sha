@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1733244415188" clover="3.2.0">
-  <project timestamp="1733244415188" name="All files">
+<coverage generated="1733246722194" clover="3.2.0">
+  <project timestamp="1733246722194" name="All files">
     <metrics statements="178" coveredstatements="74" conditionals="47" coveredconditionals="12" methods="18" coveredmethods="7" elements="243" coveredelements="93" complexity="0" loc="178" ncloc="178" packages="2" files="6" classes="6"/>
     <package name="public.js">
       <metrics statements="106" coveredstatements="40" conditionals="33" coveredconditionals="8" methods="9" coveredmethods="5"/>
@@ -81,17 +81,17 @@
       </file>
       <file name="view_students_frontend.js" path="C:\Users\shara\Documents\DVOPS_Projects\StudentSphere-sha\public\js\view_students_frontend.js">
         <metrics statements="37" coveredstatements="11" conditionals="11" coveredconditionals="0" methods="4" coveredmethods="2"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="7" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="14" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="37" count="0" type="cond" truecount="0" falsecount="5"/>

@@ -11,7 +11,6 @@ function editStudent(data) {
     document.getElementById("updateButton").setAttribute("onclick", 'updateStudent("' + selectedStudent.id + '")');
         
         $('#editStudentModal').modal('show');
-
 }
 
 
@@ -53,5 +52,4 @@ function updateStudent(id) {
     };
     request.send(JSON.stringify(jsonData));
     console.log(jsonData); // Log the data being sent
-
 }
