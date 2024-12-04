@@ -1,5 +1,5 @@
-# Ignore NYC output
-.nyc_output/
+# ignore node_modules folder
+node_modules/
 
-# Ignore coverage folder
-coverage/
+# Ignore package-lock.json 
+package-lock.json
