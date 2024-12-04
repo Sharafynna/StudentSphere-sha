@@ -53,9 +53,16 @@ function updateStudent(id) {
     request.setRequestHeader('Content-Type', 'application/json');
 
     request.onload = function () {
+
         if (request.status === 201) {
             const response = JSON.parse(request.responseText);
             document.getElementById("editMessage").innerHTML = 'Student modified successfully!';
+
+        response = JSON.parse(request.responseText);
+
+        if (response.message == "Student modified successfully!") {
+            document.getElementById("editMessage").innerHTML = 'Edited Student Information: ' + jsonData.name + '!';
+
             document.getElementById("editMessage").setAttribute("class", "text-success");
         } else {
             document.getElementById("editMessage").innerHTML = 'Unable to edit student information!';
