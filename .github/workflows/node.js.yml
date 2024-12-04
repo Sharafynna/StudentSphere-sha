@@ -31,3 +31,7 @@ jobs:
 
     - name: Run the frontend test cases
       run: rm -rf .nyc_output & npx nyc --nycrc-path .nycrc-frontend cypress run
+
+    - name: Fix permissions for NYC
+      run: chmod +x ./node_modules/.bin/nyc
+
