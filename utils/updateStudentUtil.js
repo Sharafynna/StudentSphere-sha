@@ -22,34 +22,17 @@ async function writeJSON(data, filename) {
 async function editStudent(req, res) {
     try {
         const id = req.params.id;
-        const { name, matric_no, date_of_birth, email, contact_no, course } = req.body;
-
-        //checking if got any empty fields or only spaces
-        if (!name || name.trim() === "" || 
-            !matric_no || matric_no.trim() === "" || 
-            !date_of_birth || 
-            !email || 
-            !contact_no || 
-            !course || course.trim() === "") {
-            return res.status(400).json({ message: 'All fields are required and cannot contain only spaces!' });
-        }
-
-        //check if email is correct format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return res.status(400).json({ message: 'Invalid email format!' });
-        }
-
-        // check if phone number is 8 numbers long
-        if (contact_no.length !== 8 || isNaN(contact_no)) {
-            return res.status(400).json({ message: 'Contact number must be exactly 8 digits!' });
-        }
-
+        const name = req.body.name;
+        const matric_no = req.body.matric_no;
+        const date_of_birth = req.body.date_of_birth;
+        const email = req.body.email;
+        const contact_no = req.body.contact_no;
+        const course = req.body.course;
         const allStudents = await readJSON('utils/students.json');
-        let modified = false;
-
-        for (let i = 0; i < allStudents.length; i++) {
-            if (allStudents[i].id == id) {
+        var modified = false;
+        for (var i = 0; i < allStudents.length; i++) {
+            var curcurrStudents = allStudents[i];
+            if (curcurrStudents.id == id) {
                 allStudents[i].name = name;
                 allStudents[i].matric_number = matric_no;
                 allStudents[i].date_of_birth = date_of_birth;
@@ -59,9 +42,8 @@ async function editStudent(req, res) {
                 modified = true;
             }
         }
-
         if (modified) {
-            await writeJSON(allStudents, 'utils/students.json');
+            await fs.writeFile('utils/students.json', JSON.stringify(allStudents), 'utf8');
             return res.status(201).json({ message: 'Student modified successfully!' });
         } else {
             return res.status(500).json({ message: 'Student not found!' });
@@ -70,7 +52,6 @@ async function editStudent(req, res) {
         return res.status(500).json({ message: error.message });
     }
 }
-
 
 module.exports = {
     readJSON,
