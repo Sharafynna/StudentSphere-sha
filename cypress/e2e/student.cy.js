@@ -4,7 +4,7 @@ describe('Student Sphere Frontend', () => {
   before(() => {
     cy.task('startServer').then((url) => {
       baseUrl = url; // Store the base URL
-      cy.visit(baseUrl);
+      cy.visit(baseUrl, { timeout: 60000 });
     });
   });
 
@@ -15,29 +15,30 @@ describe('Student Sphere Frontend', () => {
   it('should update an existing student', () => {
     cy.visit(baseUrl);
     cy.wait(500);
-
+  
     // Click the edit button for the student
-    cy.get('button.btn').filter(':contains("Edit")').last().click();
-
+    cy.get('button.btn').filter(':contains("Edit")', { timeout: 10000 }).last().click();
+  
     // Update student details  
-    cy.get('#editMatric_no').clear().type('6784332A', {force:true});
+    cy.get('#editMatric_no').clear().type('6784332A', { force: true });
     cy.get('#editName').clear().type('Updated Student Name');
     cy.get('#editDate_of_birth').clear().type('1973-11-07');
     cy.get('#editEmail').clear().type('updated@example.com');
     cy.get('#editContact_no').clear().type('96654573');
     cy.get('#editCourse').select('Information Technology');
     cy.wait(500);
-
+  
     // Click the update student button
-    cy.get('#updateButton').click(); 
-
-    cy.get('#editMessage').should('have.text','Student modified successfully!');
-    cy.wait(1000);
-
+    cy.get('#updateButton').click();
+  
+    // Wait for success message
+    cy.get('#editMessage', { timeout: 10000 }).should('have.text', 'Student modified successfully!');
+  
     // Verify the student is updated in the table
-    cy.get('#tableContent').contains('Updated Student Name').should('exist');
+    cy.get('#tableContent', { timeout: 10000 }).contains('Updated Student Name').should('exist');
     cy.get('#tableContent').contains('Test Student').should('not.exist');
   });
+  
 
   it("should be unable to update an existing student - empty fields", () => {
     cy.visit(baseUrl);

@@ -18,10 +18,10 @@
     "chai-http": "^4.3.0",
     "cypress": "^13.16.0",
     "express": "^4.21.1",
-    "fs": "^0.0.1-security",
-    "nyc": "^17.1.0"
+    "fs": "^0.0.1-security"
   },
   "devDependencies": {
-    "mocha": "^11.0.1"
+    "mocha": "^11.0.1",
+    "nyc": "^17.1.0"
   }
 }
