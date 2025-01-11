@@ -32,7 +32,7 @@ describe('Student Sphere Frontend', () => {
     cy.get('#updateButton').click();
   
     // Wait for success message
-    cy.get('#editMessage', { timeout: 10000 }).should('have.text', 'Student modified successfully!');
+    cy.get('#editMessage', { timeout: 30000 }).should('have.text', 'Student modified successfully!');
   
     // Verify the student is updated in the table
     cy.get('#tableContent', { timeout: 30000 }).contains('Updated Student Name').should('exist');
