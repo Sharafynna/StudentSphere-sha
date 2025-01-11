@@ -19,16 +19,31 @@ function updateStudent(id) {
     var response = "";
 
     var jsonData = new Object();
-    jsonData.matric_no = document.getElementById("editMatric_no").value.trim();
-    jsonData.name = document.getElementById("editName").value.trim();
-    jsonData.date_of_birth = document.getElementById("editDate_of_birth").value.trim();
-    jsonData.email = document.getElementById("editEmail").value.trim();
-    jsonData.contact_no = document.getElementById("editContact_no").value.trim();
-    jsonData.course = document.getElementById("editCourse").value.trim();
+    jsonData.matric_no = document.getElementById("editMatric_no").value;
+    jsonData.name = document.getElementById("editName").value;
+    jsonData.date_of_birth = document.getElementById("editDate_of_birth").value;
+    jsonData.email = document.getElementById("editEmail").value;
+    jsonData.contact_no = document.getElementById("editContact_no").value;
+    jsonData.course = document.getElementById("editCourse").value;
 
     if (!jsonData.name || !jsonData.matric_no  || !jsonData.date_of_birth || !jsonData.email || !jsonData.contact_no || !jsonData.course ) {
             document.getElementById("editMessage").innerHTML = 'All fields are required and cannot contain only spaces!';
             document.getElementById("editMessage").setAttribute("class", "text-danger");
+        return;
+    }
+
+    // Check email 
+    var emailField = document.getElementById("editEmail");
+    if (!emailField.checkValidity()) {
+        document.getElementById("editMessage").innerHTML = 'Invalid email format!';
+        document.getElementById("editMessage").setAttribute("class", "text-danger");
+        return;
+    }
+
+    // Check phone number length
+    if (jsonData.contact_no.length !== 8 || isNaN(jsonData.contact_no)) {
+        document.getElementById("editMessage").innerHTML = 'Contact number must be exactly 8 digits!';
+        document.getElementById("editMessage").setAttribute("class", "text-danger");
         return;
     }
 
@@ -38,19 +53,16 @@ function updateStudent(id) {
     request.setRequestHeader('Content-Type', 'application/json');
 
     request.onload = function () {
-        response = JSON.parse(request.responseText);
-
-        if (response.message == "Students modified successfully!") {
-            document.getElementById("editMessage").innerHTML = 'Edited Student Information: ' + jsonData.name + '!';
+        if (request.status === 201) {
+            const response = JSON.parse(request.responseText);
+            document.getElementById("editMessage").innerHTML = 'Student modified successfully!';
             document.getElementById("editMessage").setAttribute("class", "text-success");
-            window.location.href = 'index.html';
-        }
-        else {
+        } else {
             document.getElementById("editMessage").innerHTML = 'Unable to edit student information!';
             document.getElementById("editMessage").setAttribute("class", "text-danger");
         }
     };
+    
     request.send(JSON.stringify(jsonData));
     console.log(jsonData); // Log the data being sent
-
 }
