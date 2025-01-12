@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <coverage generated="1736675813554" clover="3.2.0">
   <project timestamp="1736675813554" name="All files">
+
+<coverage generated="1736599477155" clover="3.2.0">
+  <project timestamp="1736599477155" name="All files">
+
     <metrics statements="114" coveredstatements="52" conditionals="39" coveredconditionals="15" methods="9" coveredmethods="5" elements="162" coveredelements="72" complexity="0" loc="114" ncloc="114" packages="1" files="3" classes="3"/>
     <file name="addstudent.js" path="C:\Users\shara\Documents\DVOPS_Projects\StudentSphere-sha\public\js\addstudent.js">
       <metrics statements="34" coveredstatements="0" conditionals="12" coveredconditionals="0" methods="2" coveredmethods="0"/>
