@@ -55,24 +55,25 @@ function updateStudent(id) {
     request.onload = function () {
         if (request.status === 201) {
             const response = JSON.parse(request.responseText);
-            document.getElementById("editMessage").innerHTML = 'Student modified successfully!';
-
-
-        if (request.status === 201) {
-            const response = JSON.parse(request.responseText);
-            document.getElementById("editMessage").innerHTML = 'Student modified successfully!';
-
-        response = JSON.parse(request.responseText);
-
-        if (response.message == "Student modified successfully!") {
-            document.getElementById("editMessage").innerHTML = 'Edited Student Information: ' + jsonData.name + '!';
-            document.getElementById("editMessage").setAttribute("class", "text-success");
+            
+            if (response.message === "Student modified successfully!") {
+                document.getElementById("editMessage").innerHTML = 
+                    'Edited Student Information: ' + jsonData.name + '!';
+                document.getElementById("editMessage").setAttribute("class", "text-success");
+            } else {
+                document.getElementById("editMessage").innerHTML = 
+                    'Unable to edit student information!';
+                document.getElementById("editMessage").setAttribute("class", "text-danger");
+            }
         } else {
-            document.getElementById("editMessage").innerHTML = 'Unable to edit student information!';
+            document.getElementById("editMessage").innerHTML = 
+                'Failed to edit student information. Please try again!';
             document.getElementById("editMessage").setAttribute("class", "text-danger");
         }
     };
     
+    
+    
     request.send(JSON.stringify(jsonData));
     console.log(jsonData); // Log the data being sent
-}}};
+};

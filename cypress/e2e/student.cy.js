@@ -107,17 +107,14 @@ describe('Student Sphere Frontend', () => {
         cy.get('#editDate_of_birth').clear().type('1973-11-07');
         cy.get('#editEmail').clear().type('updated@example.com');
         cy.get('#editContact_no').clear().type('96654573767956');
-        cy.get('#editCourse').select('Information Technology');
+        cy.get('#editCourse').select('Information Technology'); 
         cy.wait(500);
     
         // Click the update student button
         cy.get('#updateButton').click(); 
-    
         cy.get('#editMessage').should('have.text','Contact number must be exactly 8 digits!');
-        cy.wait(1000);
-    
-        // Verify the student is updated in the table
-        cy.get('#tableContent').contains('Updated Student Name').should('exist');
-        cy.get('#tableContent').contains('Test Student').should('not.exist');
+      
         });
-});
+      
+       });
+       ;
