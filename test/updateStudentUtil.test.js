@@ -1,8 +1,9 @@
-const { describe, it, before, after } = require('mocha');
 const { expect } = require('chai');
 const sinon = require('sinon');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const mocha = require('mocha');
+const { describe, it, before, after } = mocha;
 const { app, server } = require('../index');
 const { readJSON, writeJSON } = require('../utils/updateStudentUtil'); // import original functions to stub them
 
