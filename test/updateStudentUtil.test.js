@@ -57,7 +57,7 @@ describe('Student API', () => {
             chai.request(baseUrl)
                 .put(`/edit-student/${studentId}`)
                 .send({
-                    name: 'adam',
+                    name: 'adham',
                     matric_no: '23097765C',
                     date_of_birth: '2006-06-30',
                     email: 'sharafynna08@gmail.com',
