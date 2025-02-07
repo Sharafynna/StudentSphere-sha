@@ -69,7 +69,9 @@ async function editStudent(req, res) {
         // Save the updated student data
         if (modified) {
             await writeJSON(allStudents, 'utils/students.json');
+            console.log('Returning response message:', 'Student modified successfully!');
             return res.status(201).json({ message: 'Student modified successfully!' });
+
         } else {
             return res.status(500).json({ message: 'Student not found!' });
         }

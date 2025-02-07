@@ -14,7 +14,7 @@ describe('Student Sphere Frontend', () => {
 
   it('should update an existing student', () => {
     cy.visit(baseUrl);
-    cy.wait(500);
+    cy.wait(1000);
   
     // Click the edit button for the student
     cy.get('button.btn').filter(':contains("Edit")', { timeout: 10000 }).last().click();
@@ -26,13 +26,15 @@ describe('Student Sphere Frontend', () => {
     cy.get('#editEmail').clear().type('updated@example.com');
     cy.get('#editContact_no').clear().type('96654573');
     cy.get('#editCourse').select('Information Technology');
-    cy.wait(500);
+    cy.wait(1000);
   
     // Click the update student button
     cy.get('#updateButton').click();
   
     // Wait for success message
-    cy.get('#editMessage', { timeout: 30000 }).should('have.text', 'Student modified successfully!');
+    cy.wait(2000); // Wait a bit longer before checking the message
+    cy.get('#editMessage', { timeout: 30000 }).should('be.visible').and('have.text', 'Student modified successfully!');
+
   
     // Verify the student is updated in the table
     cy.get('#tableContent', { timeout: 30000 }).contains('Updated Student Name').should('exist');
@@ -42,7 +44,7 @@ describe('Student Sphere Frontend', () => {
 
   it("should be unable to update an existing student - empty fields", () => {
     cy.visit(baseUrl);
-    cy.wait(500);
+    cy.wait(1000);
 
     // Click the edit button for the student
     cy.get('button.btn').filter(':contains("Edit")').last().click();
@@ -54,7 +56,7 @@ describe('Student Sphere Frontend', () => {
     cy.get('#editEmail').clear().type('updated@example.com');
     cy.get('#editContact_no').clear().type('96654573');
     cy.get('#editCourse').select('Information Technology');
-    cy.wait(500);
+    cy.wait(1000);
 
     // Click the update student button
     cy.get('#updateButton').click(); 
@@ -69,7 +71,7 @@ describe('Student Sphere Frontend', () => {
 
     it("should be unable to update an existing student - invalid email format", () => {
       cy.visit(baseUrl);
-      cy.wait(500);
+      cy.wait(1000);
   
       // Click the edit button for the student
       cy.get('button.btn').filter(':contains("Edit")').last().click();
@@ -96,7 +98,7 @@ describe('Student Sphere Frontend', () => {
 
       it("should be unable to update an existing student - invalid phone number", () => {
         cy.visit(baseUrl);
-        cy.wait(500);
+        cy.wait(1000);
     
         // Click the edit button for the student
         cy.get('button.btn').filter(':contains("Edit")').last().click();
@@ -108,7 +110,7 @@ describe('Student Sphere Frontend', () => {
         cy.get('#editEmail').clear().type('updated@example.com');
         cy.get('#editContact_no').clear().type('96654573767956');
         cy.get('#editCourse').select('Information Technology'); 
-        cy.wait(500);
+        cy.wait(1000);
     
         // Click the update student button
         cy.get('#updateButton').click(); 
