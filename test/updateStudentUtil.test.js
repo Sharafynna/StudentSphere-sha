@@ -44,7 +44,7 @@ describe('Student API', () => {
                 {
                     id: studentId,
                     name: 'Old Name',
-                    matric_number: 'A9876543X',
+                    matric_no: 'A9876543X',
                     date_of_birth: '2000-01-01',
                     email: 'oldemail@example.com',
                     contact_no: '87654321',
@@ -65,7 +65,7 @@ describe('Student API', () => {
                     course: 'Information Technology',
                 })
                 .end((err, res) => {
-                    expect(res).to.have.status(201);
+                    expect(res).to.have.status(200);
                     expect(res.body.message).to.equal('Student modified successfully!');
                     done();
                 });
@@ -76,7 +76,7 @@ describe('Student API', () => {
                 {
                     id: studentId,
                     name: 'Old Name',
-                    matric_number: 'A9876543X',
+                    matric_no: 'A9876543X',
                     date_of_birth: '2000-01-01',
                     email: 'oldemail@example.com',
                     contact_no: '87654321',
@@ -105,7 +105,7 @@ describe('Student API', () => {
                 {
                     id: studentId,
                     name: 'Old Name',
-                    matric_number: 'A9876543X',
+                    matric_no: 'A9876543X',
                     date_of_birth: '2000-01-01',
                     email: 'oldemail@example.com',
                     contact_no: '87654321',
@@ -134,7 +134,7 @@ describe('Student API', () => {
                 {
                     id: studentId,
                     name: 'Old Name',
-                    matric_number: 'A9876543X',
+                    matric_no: 'A9876543X',
                     date_of_birth: '2000-01-01',
                     email: 'oldemail@example.com',
                     contact_no: '87654321',

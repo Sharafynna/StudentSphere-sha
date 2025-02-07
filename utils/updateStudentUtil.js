@@ -57,7 +57,7 @@ async function editStudent(req, res) {
         for (let i = 0; i < allStudents.length; i++) {
             if (allStudents[i].id == id) {
                 allStudents[i].name = name;
-                allStudents[i].matric_number = matric_no;
+                allStudents[i].matric_no = matric_no;
                 allStudents[i].date_of_birth = date_of_birth;
                 allStudents[i].email = email;
                 allStudents[i].contact_no = contact_no;
@@ -69,8 +69,7 @@ async function editStudent(req, res) {
         // Save the updated student data
         if (modified) {
             await writeJSON(allStudents, 'utils/students.json');
-            console.log('Returning response message:', 'Student modified successfully!');
-            return res.status(201).json({ message: 'Student modified successfully!' });
+            return res.status(200).json({ message: 'Student modified successfully!' });
 
         } else {
             return res.status(500).json({ message: 'Student not found!' });
