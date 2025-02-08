@@ -80,11 +80,6 @@ function updateStudent(id) {
         }
     };
 
-    request.onerror = function () {
-        document.getElementById("editMessage").innerHTML = 'Network error! Please check your connection.';
-        document.getElementById("editMessage").setAttribute("class", "text-danger");
-    };
-
     request.send(JSON.stringify(jsonData));
     console.log("Sent Data:", jsonData);
 }
