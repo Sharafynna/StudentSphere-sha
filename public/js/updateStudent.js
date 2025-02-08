@@ -10,9 +10,8 @@ function editStudent(data) {
 
     document.getElementById("updateButton").setAttribute("onclick", 'updateStudent("' + selectedStudent.id + '")');
         
-        $('#editStudentModal').modal('show');
+    $('#editStudentModal').modal('show');
 }
-
 
 function updateStudent(id) {
     console.log(id);
@@ -27,7 +26,7 @@ function updateStudent(id) {
         course: document.getElementById("editCourse").value
     };
 
-    if (!jsonData.name || !jsonData.matric_no  || !jsonData.date_of_birth || !jsonData.email || !jsonData.contact_no || !jsonData.course ) {
+    if (!jsonData.name || !jsonData.matric_no || !jsonData.date_of_birth || !jsonData.email || !jsonData.contact_no || !jsonData.course) {
         document.getElementById("editMessage").innerHTML = 'All fields are required and cannot contain only spaces!';
         document.getElementById("editMessage").setAttribute("class", "text-danger");
         return;
@@ -54,12 +53,12 @@ function updateStudent(id) {
     request.setRequestHeader('Content-Type', 'application/json');
 
     request.onload = function () {
-        console.log("🔥 Server Response:", request.responseText); // Debugging output
-    
+        console.log("🔥 Server Response:", request.responseText);
+
         if (request.status === 200) { 
             const response = JSON.parse(request.responseText);
-            console.log("✅ Response Message:", response.message); // Log the success message
-    
+            console.log("✅ Response Message:", response.message);
+
             if (response.message === "Student modified successfully!") {
                 document.getElementById("editMessage").innerHTML = 'Student modified successfully!';
                 document.getElementById("editMessage").setAttribute("class", "text-success");
@@ -67,12 +66,19 @@ function updateStudent(id) {
                 document.getElementById("editMessage").innerHTML = 'Unable to edit student information!';
                 document.getElementById("editMessage").setAttribute("class", "text-danger");
             }
-        } else {
+        } 
+        // ✅ New Test Case: Handle non-existent student
+        else if (request.status === 404) {
+            const response = JSON.parse(request.responseText);
+            console.log("🚨 Student Not Found:", response.message);
+            document.getElementById("editMessage").innerHTML = 'Student not found!';
+            document.getElementById("editMessage").setAttribute("class", "text-danger");
+        } 
+        else {
             document.getElementById("editMessage").innerHTML = 'Unable to edit student information!';
             document.getElementById("editMessage").setAttribute("class", "text-danger");
         }
     };
-    
 
     request.onerror = function () {
         document.getElementById("editMessage").innerHTML = 'Network error! Please check your connection.';
@@ -80,5 +86,5 @@ function updateStudent(id) {
     };
 
     request.send(JSON.stringify(jsonData));
-    console.log("Sent Data:", jsonData); // ✅ Added: Log sent data for debugging
+    console.log("Sent Data:", jsonData);
 }

@@ -157,5 +157,38 @@ describe('Student API', () => {
                     done();
                 });
         });
+
+        it('should be unable to edit student if the student does not exist', (done) => {
+            readJSONStub.resolves([
+                {
+                    id: studentId, // existing student
+                    name: 'Old Name',
+                    matric_no: 'A9876543X',
+                    date_of_birth: '2000-01-01',
+                    email: 'oldemail@example.com',
+                    contact_no: '87654321',
+                    course: 'Computer Science',
+                },
+            ]);
+        
+            let nonExistentId = 9999999999999999; // ID not in database
+        
+            chai.request(baseUrl)
+                .put(`/edit-student/${nonExistentId}`)
+                .send({
+                    name: 'New Student',
+                    matric_no: '23124567D',
+                    date_of_birth: '2005-09-21',
+                    email: 'newstudent@example.com',
+                    contact_no: '81234567',
+                    course: 'Cyber Security',
+                })
+                .end((err, res) => {
+                    expect(res).to.have.status(404);
+                    expect(res.body.message).to.equal('Student not found!');
+                    done();
+                });
+        });
+        
     });
 });

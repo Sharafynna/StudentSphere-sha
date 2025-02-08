@@ -72,7 +72,8 @@ async function editStudent(req, res) {
             return res.status(200).json({ message: 'Student modified successfully!' });
 
         } else {
-            return res.status(500).json({ message: 'Student not found!' });
+            // ✅ Added handling for a student that does not exist
+            return res.status(404).json({ message: 'Student not found!' });
         }
     } catch (error) {
         return res.status(500).json({ message: error.message });
