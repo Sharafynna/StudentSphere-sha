@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+:vapiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rms-deployment
@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: rms-container
-          image: sharafynna/rms-docker-img
+          image: sharafynna/rms-docker-img:v3
           ports:
             - containerPort: 5050
