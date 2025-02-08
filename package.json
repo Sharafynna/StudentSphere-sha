@@ -20,8 +20,9 @@
     "fs": "^0.0.1-security"
   },
   "devDependencies": {
-    "chai": "^5.1.2",
+    "chai": "^4.3.4",
     "cypress": "^14.0.2",
+    "esm": "^3.2.25",
     "mocha": "^11.1.0",
     "nyc": "^17.1.0",
     "sinon": "^19.0.2"
