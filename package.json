@@ -29,5 +29,13 @@
   "coverageThreshold": {
     "global": {
       "functions": 70}
+},
+  "nyc": {
+    "check-coverage": true,
+    "lines": 70,
+    "functions": 70,
+    "branches": 70,
+    "statements": 70
+  }
 }
-}
+
