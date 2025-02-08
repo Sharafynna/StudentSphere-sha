@@ -4,9 +4,10 @@
   "description": "This is a project for the DVOPS subject, which is a student management system.",
   "main": "index.js",
   "scripts": {
-    "backend-test": "nyc --nycrc-path .nycrc-backend mocha",
+    "backend-test": "npx nyc mocha",
     "frontend-instrument": "xcopy public instrumented /I /E /Y & nyc instrument public instrumented",
-    "frontend-test": "rmdir -r .nyc_output & nyc --nycrc-path .nycrc-frontend cypress run"
+    "frontend-test": "rmdir -r .nyc_output & nyc --nycrc-path .nycrc-frontend cypress run",
+    "test": "nyc mocha"
   },
   "keywords": [],
   "author": "",
@@ -14,14 +15,29 @@
   "dependencies": {
     "@cypress/code-coverage": "^3.13.8",
     "body-parser": "^1.20.3",
-    "chai": "^4.3.4",
     "chai-http": "^4.3.0",
-    "cypress": "^13.16.0",
     "express": "^4.21.1",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "sinon": "^15.0.0"
   },
   "devDependencies": {
-    "mocha": "^11.0.1",
-    "nyc": "^17.1.0"
+    "chai": "^4.3.4",
+    "cypress": "^14.0.2",
+    "esm": "^3.2.25",
+    "mocha": "^11.1.0",
+    "nyc": "^17.1.0",
+    "sinon": "^19.0.2"
+  },
+  "coverageThreshold": {
+    "global": {
+      "functions": 70
+    }
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 50,
+    "functions": 30,
+    "branches": 60,
+    "statements": 50
   }
 }

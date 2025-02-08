@@ -3,7 +3,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+
     image: sharafynna/rms-docker-img:latest
     container_name: rms-docker-container-sharafynna
+
     ports:
       - "8000:5050"

@@ -10,29 +10,29 @@ function editStudent(data) {
 
     document.getElementById("updateButton").setAttribute("onclick", 'updateStudent("' + selectedStudent.id + '")');
         
-        $('#editStudentModal').modal('show');
+    $('#editStudentModal').modal('show');
 }
 
-
 function updateStudent(id) {
-    console.log(id)
+    console.log(id);
     var response = "";
 
-    var jsonData = new Object();
-    jsonData.matric_no = document.getElementById("editMatric_no").value;
-    jsonData.name = document.getElementById("editName").value;
-    jsonData.date_of_birth = document.getElementById("editDate_of_birth").value;
-    jsonData.email = document.getElementById("editEmail").value;
-    jsonData.contact_no = document.getElementById("editContact_no").value;
-    jsonData.course = document.getElementById("editCourse").value;
+    var jsonData = {
+        matric_no: document.getElementById("editMatric_no").value,
+        name: document.getElementById("editName").value,
+        date_of_birth: document.getElementById("editDate_of_birth").value,
+        email: document.getElementById("editEmail").value,
+        contact_no: document.getElementById("editContact_no").value,
+        course: document.getElementById("editCourse").value
+    };
 
-    if (!jsonData.name || !jsonData.matric_no  || !jsonData.date_of_birth || !jsonData.email || !jsonData.contact_no || !jsonData.course ) {
-            document.getElementById("editMessage").innerHTML = 'All fields are required and cannot contain only spaces!';
-            document.getElementById("editMessage").setAttribute("class", "text-danger");
+    if (!jsonData.name || !jsonData.matric_no || !jsonData.date_of_birth || !jsonData.email || !jsonData.contact_no || !jsonData.course) {
+        document.getElementById("editMessage").innerHTML = 'All fields are required and cannot contain only spaces!';
+        document.getElementById("editMessage").setAttribute("class", "text-danger");
         return;
     }
 
-    // Check email 
+    // Check email validity
     var emailField = document.getElementById("editEmail");
     if (!emailField.checkValidity()) {
         document.getElementById("editMessage").innerHTML = 'Invalid email format!';
@@ -53,26 +53,33 @@ function updateStudent(id) {
     request.setRequestHeader('Content-Type', 'application/json');
 
     request.onload = function () {
-        if (request.status === 201) {
+        console.log("🔥 Server Response:", request.responseText);
+
+        if (request.status === 200) { 
             const response = JSON.parse(request.responseText);
-            document.getElementById("editMessage").innerHTML = 'Student modified successfully!';
+            console.log("✅ Response Message:", response.message);
 
-
-        if (request.status === 201) {
+            if (response.message === "Student modified successfully!") {
+                document.getElementById("editMessage").innerHTML = 'Student modified successfully!';
+                document.getElementById("editMessage").setAttribute("class", "text-success");
+            } else {
+                document.getElementById("editMessage").innerHTML = 'Unable to edit student information!';
+                document.getElementById("editMessage").setAttribute("class", "text-danger");
+            }
+        } 
+        // ✅ New Test Case: Handle non-existent student
+        else if (request.status === 404) {
             const response = JSON.parse(request.responseText);
-            document.getElementById("editMessage").innerHTML = 'Student modified successfully!';
-
-        response = JSON.parse(request.responseText);
-
-        if (response.message == "Student modified successfully!") {
-            document.getElementById("editMessage").innerHTML = 'Edited Student Information: ' + jsonData.name + '!';
-            document.getElementById("editMessage").setAttribute("class", "text-success");
-        } else {
+            console.log("🚨 Student Not Found:", response.message);
+            document.getElementById("editMessage").innerHTML = 'Student not found!';
+            document.getElementById("editMessage").setAttribute("class", "text-danger");
+        } 
+        else {
             document.getElementById("editMessage").innerHTML = 'Unable to edit student information!';
             document.getElementById("editMessage").setAttribute("class", "text-danger");
         }
     };
-    
+
     request.send(JSON.stringify(jsonData));
-    console.log(jsonData); // Log the data being sent
-}}};
+    console.log("Sent Data:", jsonData);
+}
